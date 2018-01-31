@@ -6,8 +6,8 @@
     <ProjectGuid>{AC75A7D7-B364-4EA8-8711-73EC5F44BD12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <OutputPath>.mono/temp/bin/$(Configuration)</OutputPath>
-    <RootNamespace>New Game Project</RootNamespace>
-    <AssemblyName>New Game Project</AssemblyName>
+    <RootNamespace>GodotTestingProject</RootNamespace>
+    <AssemblyName>GodotTestingProject</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <BaseIntermediateOutputPath>.mono/temp/obj</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)/$(Configuration)</IntermediateOutputPath>
@@ -54,7 +54,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunTests.cs" />
-    <Compile Include="Tests\MathTests.cs" />
+    <Compile Include="Tests\MathTests\MathfLerpTests.cs" />
+    <Compile Include="Tests\MathTests\MathfMiscTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GodotTestTools\GodotTestTools.csproj">
@@ -67,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
+    <Folder Include="Tests\MathTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

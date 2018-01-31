@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New Game Project", "New Game Project.csproj", "{AC75A7D7-B364-4EA8-8711-73EC5F44BD12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodotTestingProject", "GodotTestingProject.csproj", "{AC75A7D7-B364-4EA8-8711-73EC5F44BD12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodotTestTools", "..\GodotTestTools\GodotTestTools.csproj", "{D5B6C8DF-D4BF-473B-B9FE-F7E1CB46BC91}"
 EndProject

@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="New Game Project"
+config/name="GodotTestingProject"
 run/main_scene="res://RunTests.tscn"
 config/icon="res://icon.png"
 
