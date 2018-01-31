@@ -1,0 +1,9 @@
+bin
+obj
+*.user
+*.userprefs
+
+*.mono
+*.import
+
+packages/
