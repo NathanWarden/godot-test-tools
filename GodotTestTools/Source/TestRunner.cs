@@ -60,7 +60,7 @@ namespace GodotTestTools
 				}
 				catch ( Exception e )
 				{
-					testResult = new TestResult(method, e.InnerException, TestResult.Result.Failed);
+					testResult = new TestResult(method, e.InnerException ?? e, TestResult.Result.Failed);
 				}
 				finally
 				{
