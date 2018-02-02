@@ -56,6 +56,8 @@
     <Compile Include="RunTests.cs" />
     <Compile Include="Tests\MathTests\MathfLerpTests.cs" />
     <Compile Include="Tests\MathTests\MathfMiscTests.cs" />
+    <Compile Include="Tests\StructTests\BasisTests.cs" />
+    <Compile Include="Tests\NodeTests\SpatialTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GodotTestTools\GodotTestTools.csproj">
@@ -69,6 +71,8 @@
   <ItemGroup>
     <Folder Include="Tests\" />
     <Folder Include="Tests\MathTests\" />
+    <Folder Include="Tests\StructTests\" />
+    <Folder Include="Tests\NodeTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,6 +9,8 @@ public class RunTests : Node
 		int passed = 0;
 		int failed = 0;
 
+		GD.Print("\nTest Results:\n");
+
 		await testRunner.Run((TestResult testResult) =>
 		{
 			if (testResult.result == TestResult.Result.Failed)
