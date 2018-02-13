@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://RunTests.cs" type="Script" id=1]
-[ext_resource path="res://TestRunnerGUI.cs" type="Script" id=2]
+[ext_resource path="res://TestRunnerInterface/TestRunnerGUI.cs" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -39,9 +38,6 @@ content_margin_top = -1.0
 content_margin_bottom = -1.0
 
 [node name="Node" type="Node" index="0"]
-
-script = ExtResource( 1 )
-enabled = false
 
 [node name="Panel" type="Panel" parent="." index="0"]
 
@@ -109,7 +105,7 @@ hide_folding = false
 hide_root = true
 drop_mode_flags = 2
 select_mode = 0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Rect", "custom_styles" ]
 enabled = true
 

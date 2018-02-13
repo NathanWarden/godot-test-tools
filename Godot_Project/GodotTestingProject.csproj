@@ -53,8 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RunTests.cs" />
-    <Compile Include="TestRunnerGUI.cs" />
+    <Compile Include="TestRunnerInterface\RunTests.cs" />
+    <Compile Include="TestRunnerInterface\TestRunnerGUI.cs" />
     <Compile Include="Tests\MathTests\MathfLerpTests.cs" />
     <Compile Include="Tests\MathTests\MathfMiscTests.cs" />
     <Compile Include="Tests\StructTests\BasisTests.cs" />
@@ -69,11 +69,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tests\" />
-    <Folder Include="Tests\MathTests\" />
-    <Folder Include="Tests\StructTests\" />
-    <Folder Include="Tests\NodeTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

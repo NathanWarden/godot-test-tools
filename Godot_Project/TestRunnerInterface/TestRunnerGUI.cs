@@ -41,9 +41,7 @@ public class TestRunnerGUI : Tree
 
             if (!treeItems.ContainsKey(classType))
             {
-                treeItems[classType] = CreateItem(rootItem) as TreeItem;
-                treeItems[classType].SetCustomColor(0, new Color(0,1,0));
-                treeItems[classType].Collapsed = true;
+                treeItems[classType] = CreateTreeItemsForClassType(classType, rootItem);
             }
 
             treeItems[classType].SetText(0, testResult.classType.ToString());
@@ -54,7 +52,13 @@ public class TestRunnerGUI : Tree
 
             if (didFail)
             {
-                treeItems[classType].SetCustomColor(0, new Color(1,0,0));
+                TreeItem top = treeItems[classType];
+
+                while (top != null)
+                {
+                    top.SetCustomColor(0, new Color(1,0,0));
+                    top = top.GetParent();
+                }
             }
 
             itemSelections[testItem] = testResult;
@@ -66,6 +70,36 @@ public class TestRunnerGUI : Tree
         }
 
         Connect("cell_selected", this, "_CellSelected");
+    }
+
+
+    TreeItem CreateTreeItemsForClassType(string classType, TreeItem rootItem)
+    {
+        string[] treeItemParts = classType.Split('.');
+        string currentClassType = "";
+        TreeItem currentRoot = rootItem;
+
+        for ( int i = 0; i < treeItemParts.Length; i++)
+        {
+            if (i > 0)
+            {
+                currentClassType += ".";
+            }
+
+            currentClassType += treeItemParts[i];
+
+            if (!treeItems.ContainsKey(currentClassType))
+            {
+                treeItems[currentClassType] = CreateItem(currentRoot, 0) as TreeItem;
+                treeItems[currentClassType].SetText(0, treeItemParts[i]);
+                treeItems[currentClassType].SetCustomColor(0, new Color(0,1,0));
+                treeItems[currentClassType].Collapsed = i == treeItemParts.Length - 1;
+            }
+
+            currentRoot = treeItems[currentClassType];
+        }
+
+        return currentRoot;
     }
 
 

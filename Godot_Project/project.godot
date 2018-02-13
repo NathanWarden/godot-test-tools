@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="GodotTestingProject"
-run/main_scene="res://RunTests.tscn"
+run/main_scene="res://TestRunnerInterface/RunTests.tscn"
 config/icon="res://icon.png"
 
 [rendering]
