@@ -3,8 +3,13 @@ using GodotTestTools;
 
 public class RunTests : Node
 {
+	[Export] bool enabled;
+
+
 	async public override void _Ready()
 	{
+		if (!enabled) return;
+
 		TestRunner testRunner = new TestRunner();
 		int passed = 0;
 		int failed = 0;
@@ -26,17 +31,5 @@ public class RunTests : Node
 
 		GD.Print("Success: " + passed);
 		GD.Print("Failed: " + failed);
-
-		/*
-		// You can also collect results once all tests have been run
-		TestResult[] testResults = testRunner.TestResults;
-		foreach (TestResult testResult in testResults)
-		{
-			if (testResult.result == TestResult.Result.Failed)
-			{
-				GD.Print(testResult.classType.Name + "." + testResult.testMethod.Name + "\n" + testResult.exception.Message);
-			}
-		}
-		*/
 	}
 }

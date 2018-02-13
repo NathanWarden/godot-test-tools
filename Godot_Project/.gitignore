@@ -3,7 +3,8 @@ obj
 *.user
 *.userprefs
 
-*.mono
 *.import
+*.mono
+*.vs
 
 packages/
