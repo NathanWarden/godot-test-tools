@@ -115,14 +115,14 @@ failedIcon = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="." index="1"]
 
-anchor_left = 0.78213
-anchor_top = 0.89797
+anchor_left = 1.0
+anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 3.09888
-margin_top = 8.21802
-margin_right = -2.0
-margin_bottom = 3.0
+anchor_bottom = 0.0
+margin_left = -37.0
+margin_top = 9.0
+margin_right = -15.0
+margin_bottom = 29.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
@@ -133,7 +133,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Hide"
+text = "H"
 flat = false
 align = 1
 

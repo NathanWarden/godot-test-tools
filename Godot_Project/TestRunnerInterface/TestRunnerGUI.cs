@@ -55,7 +55,7 @@ public class TestRunnerGUI : Tree
 
             TreeItem testItem = CreateItem(treeItems[classType]) as TreeItem;
             testItem.SetText(0, testResult.testMethod.Name);
-            testItem.SetIcon(0, passedIcon);
+            testItem.SetIcon(0, didFail ? failedIcon : passedIcon);
 
             if (didFail)
             {
@@ -139,7 +139,7 @@ public class TestRunnerGUI : Tree
 
         panel.Visible = show;
 
-        hideButton.Text = show ? "Hide" : "Show";
+        hideButton.Text = show ? "H" : "S";
     }
 
 
