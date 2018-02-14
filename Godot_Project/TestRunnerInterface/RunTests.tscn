@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TestRunnerInterface/TestRunnerGUI.cs" type="Script" id=1]
+[ext_resource path="res://TestRunnerInterface/test_passed_icon.png" type="Texture" id=2]
+[ext_resource path="res://TestRunnerInterface/test_failed_icon.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -108,5 +110,31 @@ select_mode = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Rect", "custom_styles" ]
 enabled = true
+passedIcon = ExtResource( 2 )
+failedIcon = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="." index="1"]
+
+anchor_left = 0.78213
+anchor_top = 0.89797
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.09888
+margin_top = 8.21802
+margin_right = -2.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Hide"
+flat = false
+align = 1
 
 

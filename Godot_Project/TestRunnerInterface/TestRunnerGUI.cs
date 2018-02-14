@@ -5,10 +5,14 @@ using GodotTestTools;
 public class TestRunnerGUI : Tree
 {
     [Export] bool enabled;
+    [Export] Texture passedIcon;
+    [Export] Texture failedIcon;
 
     Dictionary<string, TreeItem> treeItems = new Dictionary<string, TreeItem>();
     Dictionary<TreeItem, TestResult> itemSelections = new Dictionary<TreeItem, TestResult>();
+    Panel panel;
     RichTextLabel richTextLabel;
+    Button hideButton;
     int passed = 0;
     int failed = 0;
 
@@ -22,7 +26,10 @@ public class TestRunnerGUI : Tree
 
         passed = 0;
         failed = 0;
-        richTextLabel = GetParent().GetChild(0) as RichTextLabel;
+
+        panel = GetParent() as Panel;
+        richTextLabel = GetNodeByTypeInChildren<RichTextLabel>(GetParent());
+        hideButton = GetNodeByTypeInChildren<Button>(GetParent().GetParent());
 
         await testRunner.Run((TestResult testResult) =>
         {
@@ -48,7 +55,7 @@ public class TestRunnerGUI : Tree
 
             TreeItem testItem = CreateItem(treeItems[classType]) as TreeItem;
             testItem.SetText(0, testResult.testMethod.Name);
-            testItem.SetCustomColor(0, didFail ? new Color(1,0,0) : new Color(0,1,0));
+            testItem.SetIcon(0, passedIcon);
 
             if (didFail)
             {
@@ -56,7 +63,7 @@ public class TestRunnerGUI : Tree
 
                 while (top != null)
                 {
-                    top.SetCustomColor(0, new Color(1,0,0));
+                    top.SetIcon(0, failedIcon);
                     top = top.GetParent();
                 }
             }
@@ -69,7 +76,24 @@ public class TestRunnerGUI : Tree
             SetPassedFailedText();
         }
 
+        hideButton.Connect("pressed", this, "_HidePressed");
         Connect("cell_selected", this, "_CellSelected");
+    }
+
+
+    T GetNodeByTypeInChildren<T>(Node parent) where T : Node
+    {
+        int childCount = parent.GetChildCount();
+
+        for (int i = 0; i < childCount; i++)
+        {
+            if (parent.GetChild(i) is T result)
+            {
+                return result;
+            }
+        }
+
+        return null;
     }
 
 
@@ -92,7 +116,7 @@ public class TestRunnerGUI : Tree
             {
                 treeItems[currentClassType] = CreateItem(currentRoot, 0) as TreeItem;
                 treeItems[currentClassType].SetText(0, treeItemParts[i]);
-                treeItems[currentClassType].SetCustomColor(0, new Color(0,1,0));
+                treeItems[currentClassType].SetIcon(0, passedIcon);
                 treeItems[currentClassType].Collapsed = i == treeItemParts.Length - 1;
             }
 
@@ -106,6 +130,16 @@ public class TestRunnerGUI : Tree
     void SetPassedFailedText()
     {
         richTextLabel.BbcodeText = string.Format("[color=green]Passed: {0}[/color]\t\t[color=red]Failed: {1}[/color]", passed, failed);
+    }
+
+
+    void _HidePressed()
+    {
+        bool show = !panel.Visible;
+
+        panel.Visible = show;
+
+        hideButton.Text = show ? "Hide" : "Show";
     }
 
 
