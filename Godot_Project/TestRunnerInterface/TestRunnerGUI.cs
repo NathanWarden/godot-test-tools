@@ -22,7 +22,7 @@ public class TestRunnerGUI : Tree
         if (!enabled) return;
 
         TreeItem rootItem = CreateItem(this) as TreeItem;
-        TestRunner testRunner = new TestRunner();
+        TestRunner testRunner = new TestRunner(GetTree());
 
         passed = 0;
         failed = 0;

@@ -1,5 +1,7 @@
+using Godot;
 using System;
 using System.Reflection;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using System.Threading.Tasks;
@@ -24,6 +26,8 @@ namespace GodotTestTools
 			}
 		}
 
+		SceneTree sceneTree;
+
 		Dictionary<MethodInfo, object> testMethods = new Dictionary<MethodInfo, object>();
 		Dictionary<Type, MethodInfo> setupMethods = new Dictionary<Type, MethodInfo>();
 		Dictionary<Type, MethodInfo> teardownMethods = new Dictionary<Type, MethodInfo>();
@@ -34,8 +38,9 @@ namespace GodotTestTools
 		public delegate void TestResultDelegate(TestResult testResult);
 
 
-		public TestRunner(bool requireTestFixture = true)
+		public TestRunner(SceneTree sceneTree, bool requireTestFixture = true)
 		{
+			this.sceneTree = sceneTree;
 			this.requireTestFixture = requireTestFixture;
 
 			IterateThroughAssemblies();
@@ -51,12 +56,25 @@ namespace GodotTestTools
 
 				try
 				{
+					if (testObject is Node node)
+					{
+						sceneTree.Root.AddChild(node);
+					}
+
 					if ( setupMethods.ContainsKey(method.DeclaringType) )
 					{
 						setupMethods[method.DeclaringType].Invoke(testObject,  new object[] {});
 					}
 
-					method.Invoke(testObject, new object[] {});
+					object obj = method.Invoke(testObject, new object[] {});
+
+					if (obj is IEnumerator coroutine)
+					{
+						while (coroutine.MoveNext())
+						{
+							await Task.Delay(10);
+						}
+					}
 				}
 				catch ( Exception e )
 				{
@@ -69,6 +87,11 @@ namespace GodotTestTools
 					if ( teardownMethods.ContainsKey(method.DeclaringType) )
 					{
 						teardownMethods[method.DeclaringType].Invoke(testObject,  new object[] {});
+					}
+
+					if (testObject is Node node)
+					{
+						node.QueueFree();
 					}
 				}
 

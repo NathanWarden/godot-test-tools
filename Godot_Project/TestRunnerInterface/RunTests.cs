@@ -10,7 +10,7 @@ public class RunTests : Node
 	{
 		if (!enabled) return;
 
-		TestRunner testRunner = new TestRunner();
+		TestRunner testRunner = new TestRunner(GetTree());
 		int passed = 0;
 		int failed = 0;
 

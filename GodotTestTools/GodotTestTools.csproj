@@ -31,6 +31,9 @@
     <Reference Include="nunit.framework">
       <HintPath>..\Godot_Project\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="GodotSharp">
+      <HintPath>..\Godot_Project\.mono\assemblies\GodotSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
