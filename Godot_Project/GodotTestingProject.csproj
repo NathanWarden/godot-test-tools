@@ -59,6 +59,8 @@
     <Compile Include="Tests\MathTests\MathfMiscTests.cs" />
     <Compile Include="Tests\StructTests\BasisTests.cs" />
     <Compile Include="Tests\NodeTests\SpatialTests.cs" />
+    <Compile Include="Tests\NodeTests\NodeTests.cs" />
+    <Compile Include="Tests\NodeTests\RigidbodyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GodotTestTools\GodotTestTools.csproj">
