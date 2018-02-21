@@ -2,6 +2,13 @@
 A test runner implementation for the NUnit Framework
 
 
+## Quick Start
+
+If you'd like to just see some examples in action simply clone this repo and open the project in the latest Mono version of Godot.
+
+Note: You may need to open the project, run it with F5 or F6, quit Godot, run git reset --hard, then run it again. This is due to inspector variables disappearing without a build of the mono assembly available. https://github.com/godotengine/godot/issues/15371
+
+
 ## Setup
 The current setup for using the test runner is quite easy.
 
