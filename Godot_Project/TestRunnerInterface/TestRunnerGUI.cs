@@ -4,7 +4,7 @@ using GodotTestTools;
 
 public class TestRunnerGUI : Tree
 {
-    [Export] bool enabled;
+    [Export] bool enabled = true;
     [Export] Texture passedIcon;
     [Export] Texture failedIcon;
 
